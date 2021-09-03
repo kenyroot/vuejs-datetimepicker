@@ -1,7 +1,7 @@
 <template>
   <div :style='{width:width}' class="datetime-picker"  v-on:click='calendarClicked($event)'  v-on:blur='toggleCal' >
     <div>
-      <input type='text' :readonly="readonly" id='tj-datetime-input' :required="required" :value="date"  :name='name' v-on:click='toggleCal' autocomplete='off'  />
+      <input class="form-control" type='text' :readonly="readonly" id='tj-datetime-input' :required="required" :value="date"  :name='name' v-on:click='toggleCal' autocomplete='off'  />
       <div class='calender-div' :class='{noDisplay: hideCal}'>
         <div :class='{noDisplay: hideDate}'>
           <div class='year-month-wrapper'>
@@ -71,7 +71,7 @@ import format from 'date-fns/format';
 import startOfDay from 'date-fns/start_of_day';
 import isEqual from 'date-fns/is_equal';
 
-const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const AM = 'AM'
 const PM = 'PM'
 export default {
@@ -134,6 +134,9 @@ export default {
       period: AM,
       periodStyle: 12
     }
+  },
+  mounted() {
+    this.month = ['Янв', 'Фев', 'Мар', 'Апр', 'Maй', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
   },
   methods: {
     leftMonth () {
