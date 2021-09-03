@@ -71,7 +71,7 @@ import format from 'date-fns/format';
 import startOfDay from 'date-fns/start_of_day';
 import isEqual from 'date-fns/is_equal';
 
-const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+// const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const AM = 'AM'
 const PM = 'PM'
 export default {
@@ -123,7 +123,7 @@ export default {
       activePort: null,
       timeStamp: new Date(),
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      days: [],
+      days: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
       monthIndex: 0,
       hourIndex: 0,
       minuteIndex: 0,
@@ -141,6 +141,7 @@ export default {
   mounted() {
     if(this.language == 'ru') {
       this.months = ['Янв', 'Фев', 'Мар', 'Апр', 'Maй', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+      this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
     }
   },
   methods: {
@@ -417,7 +418,7 @@ export default {
     this.minute = this.timeStamp.getMinutes()
     this.minute = this.minute < 10 ? '0' + this.minute : '' + this.minute
     this.updateCalendar()
-    days.forEach((day, idx) => {
+    this.days.forEach((day, idx) => {
       this.days[(idx - this.normalizedFirstDayOfWeek + 7) % 7] = day;
     });
     document.addEventListener('keydown', this.keyIsDown)
