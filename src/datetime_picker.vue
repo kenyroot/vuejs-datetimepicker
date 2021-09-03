@@ -112,6 +112,9 @@ export default {
       },
       message: 'Only 0 (Sunday) and 1 (Monday) are supported.'
     },
+    language:{
+      type: String
+    },
   },
   data () {
     return {
@@ -136,7 +139,9 @@ export default {
     }
   },
   mounted() {
-    this.month = ['Янв', 'Фев', 'Мар', 'Апр', 'Maй', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+    if(this.language == 'ru') {
+      this.months = ['Янв', 'Фев', 'Мар', 'Апр', 'Maй', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+    }
   },
   methods: {
     leftMonth () {
